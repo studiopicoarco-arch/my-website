@@ -19,7 +19,7 @@ body {
 
 .title-link:hover {
     color: #FFE6F5;
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 .bg_pattern {
@@ -130,12 +130,12 @@ h1:after {
 
 .arrow:hover {
     color: #FFE6F5;
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.08); /* ← 1.1 → 1.02 に修正 */
 }
 
 /* SNS アイコン全体 */
 .icons {
-    margin: 24px auto 18px; /* ← PC・スマホ共通：18px に統一 */
+    margin: 24px auto 18px;
     display: flex;
     justify-content: center;
     gap: 36px;
@@ -155,7 +155,7 @@ h1:after {
 }
 
 .icon-switch:hover {
-    transform: scale(1.1);
+    transform: scale(1.04); /* ← 1.1 → 1.02 に修正 */
 }
 
 /* 2枚重ね画像 */
@@ -260,7 +260,7 @@ footer {
 
     .icons {
         margin-top: 6px;
-        margin-bottom: 18px; /* ← スマホも 18px に統一 */
+        margin-bottom: 18px;
     }
 
     .slider {
