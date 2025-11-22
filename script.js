@@ -17,40 +17,41 @@ const images = [
 
 let index = 0;
 
-const slideA = document.getElementById("slideA");
-const slideB = document.getElementById("slideB");
-
-let current = slideA;
-let next = slideB;
-
+const imgElement = document.getElementById("slider-img");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
 // 画像プリロード
-images.forEach(src => {
-    const img = new Image();
-    img.src = src;
+const preloadImages = () => {
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+};
+preloadImages();
+
+// フェード初期設定
+imgElement.classList.add("fade");
+
+window.addEventListener("load", () => {
+    imgElement.classList.add("show");
 });
 
-window.onload = () => {
-    current.src = images[index];
-    current.classList.add("active");
-};
+const FADE_TIME = 300;
 
-// クロスフェード
+// スライド表示
 function showImage() {
-    next.src = images[index];
+    imgElement.classList.remove("show");
 
-    next.classList.add("active");
-    current.classList.remove("active");
+    setTimeout(() => {
+        imgElement.src = images[index];
 
-    const temp = current;
-    current = next;
-    next = temp;
+        if (modal.style.display === "flex") {
+            modalImg.src = images[index];
+        }
 
-    if (modal.style.display === "flex") {
-        modalImg.src = images[index];
-    }
+        imgElement.classList.add("show");
+    }, FADE_TIME);
 }
 
 function nextImage() {
@@ -69,7 +70,6 @@ function openModal() {
     modalImg.src = images[index];
 
     modalImg.classList.remove("show");
-
     setTimeout(() => {
         modalImg.classList.add("show");
     }, 10);
@@ -81,5 +81,5 @@ function closeModal() {
 
     setTimeout(() => {
         modal.style.display = "none";
-    }, 300);
+    }, FADE_TIME);
 }
