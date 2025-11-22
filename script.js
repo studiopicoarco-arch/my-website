@@ -17,44 +17,40 @@ const images = [
 
 let index = 0;
 
-const imgElement = document.getElementById("slider-img");
+const slideA = document.getElementById("slideA");
+const slideB = document.getElementById("slideB");
+
+let current = slideA;
+let next = slideB;
+
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
 // 画像プリロード
-const preloadImages = () => {
-    images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-};
-preloadImages();
-
-// フェード初期設定
-imgElement.classList.add("fade");
-
-window.addEventListener("load", () => {
-    imgElement.classList.add("show");
+images.forEach(src => {
+    const img = new Image();
+    img.src = src;
 });
 
-// スライド表示（チラ見え防止版）
+window.onload = () => {
+    current.src = images[index];
+    current.classList.add("active");
+};
+
+// クロスフェード
 function showImage() {
-    // ① まず透明にして完全非表示へ
-    imgElement.classList.remove("show");
+    next.src = images[index];
 
-    // ② ブラウザの描画タイミングと同期して src を変更
-    requestAnimationFrame(() => {
-        imgElement.src = images[index];
+    next.classList.add("active");
+    current.classList.remove("active");
 
-        if (modal.style.display === "flex") {
-            modalImg.src = images[index];
-        }
+    const temp = current;
+    current = next;
+    next = temp;
 
-        // ③ 微小遅延でフェードインを開始（スマホで安定）
-        setTimeout(() => {
-            imgElement.classList.add("show");
-        }, 20);
-    });
+    if (modal.style.display === "flex") {
+        modalImg.src = images[index];
+    }
 }
 
 function nextImage() {

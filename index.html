@@ -6,11 +6,9 @@
     <title>Picoarco</title>
 
     <link rel="icon" href="favicon.png">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,12 +22,14 @@
     <small class="subtitle">Indie Game Studio</small>
 
     <div class="slider">
+
         <button class="arrow left" onclick="prevImage()">◀</button>
 
-        <img id="slider-img"
-             src="images/top1.gif"
-             alt="slider image"
-             onclick="openModal()">
+        <!-- ▼▼ 修正版：2枚の画像でクロスフェード ▼▼ -->
+        <div class="slider-images">
+            <img id="slideA" class="slide-img" onclick="openModal()">
+            <img id="slideB" class="slide-img" onclick="openModal()">
+        </div>
 
         <button class="arrow right" onclick="nextImage()">▶</button>
     </div>
