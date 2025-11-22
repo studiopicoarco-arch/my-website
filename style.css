@@ -50,7 +50,7 @@ body {
     max-width: 620px;
     margin: 0 auto;
     padding: 40px 20px 20px 20px;
-    border-radius: 40px;
+    border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
 }
 
@@ -83,7 +83,8 @@ h1::after {
 
 /* サブタイトル */
 .subtitle {
-    margin: 2px 0 10px;
+    margin-top: 2px;
+    margin-bottom: 0;
     font-size: 16px;
     color: #b7bdf5;
     opacity: 0.9;
@@ -93,17 +94,17 @@ h1::after {
 .slider {
     position: relative;
     width: 100%;
-    max-width: 620px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin: 10px auto 0; /* ← ★ この20pxが確実に見える余白 */
     padding: 0 40px;
 }
 
 .slider img {
     width: 100%;
     height: 300px;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
-    object-fit: contain;
+    object-fit: cover;
     transition: opacity 0.3s ease;
 }
 
@@ -116,7 +117,7 @@ h1::after {
     border: none;
     cursor: pointer;
     color: #939DEA;
-    font-size: 28px;
+    font-size: 36px;
     width: 34px;
     height: 34px;
     display: flex;
@@ -126,8 +127,8 @@ h1::after {
     transition: color 0.45s ease;
 }
 
-.arrow.left { left: 8px; }
-.arrow.right { right: 8px; }
+.arrow.left { left: -20px; }
+.arrow.right { right: -20px; }
 
 .arrow:hover {
     color: #FFE6F5;
@@ -142,7 +143,7 @@ h1::after {
     gap: 36px;
     flex-wrap: wrap;
     position: relative;
-    padding-bottom: 26px;
+    padding-bottom: 24px;
 }
 
 .icon-switch {
@@ -192,7 +193,7 @@ h1::after {
 
 /* Thanks */
 .thanks-message {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     font-size: 16px;
     color: #b7bdf5;
     opacity: 0.9;
@@ -221,7 +222,7 @@ footer {
 .modal img {
     max-width: 90%;
     max-height: 90%;
-    border-radius: 0px;
+    border-radius: 20px;
 }
 
 /* ---------------------------
@@ -234,24 +235,19 @@ footer {
     }
 
     .slider {
-        padding: 16px 20px 0 20px;
+        padding: 0 40px; /* ← スマホはさらに詰める */
     }
 
-    /* ← “画像サイズ一定化” を適用した部分 */
     .slider img {
-        width: 260px;   /* 一定表示 */
-        height: 150px;  /* 一定表示 */
-        object-fit: contain;
-        margin: 0 auto;
-        display: block;
+        height: 200px;
     }
 
-    .arrow.left  { left: -8px; }
-    .arrow.right { right: -8px; }
+    .arrow.left { left: -4px; }
+    .arrow.right { right: -4px; }
 
     .icons {
         margin-top: 10px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 }
 
@@ -264,7 +260,7 @@ footer {
     .icons::after { width: 280px; }
 
     .slider {
-        padding-top: 16px;
+        padding-top: 6px; /* 余白を自然に */
         padding-left: 40px;
         padding-right: 40px;
     }
