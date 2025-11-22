@@ -41,17 +41,26 @@ const FADE_TIME = 300;
 
 // スライド表示
 function showImage() {
+    // 一度フェードアウト
     imgElement.classList.remove("show");
 
-    setTimeout(() => {
+    // フェードアウトが終わったら差し替える
+    const onFadeOutEnd = () => {
+        imgElement.removeEventListener("transitionend", onFadeOutEnd);
+
+        // 画像を切り替え
         imgElement.src = images[index];
 
+        // モーダルを開いている場合も同期
         if (modal.style.display === "flex") {
             modalImg.src = images[index];
         }
 
+        // 切り替えたあとフェードイン
         imgElement.classList.add("show");
-    }, FADE_TIME);
+    };
+
+    imgElement.addEventListener("transitionend", onFadeOutEnd);
 }
 
 function nextImage() {
