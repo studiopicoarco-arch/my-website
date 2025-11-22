@@ -63,13 +63,13 @@ h1 {
     font-size: 48px;
 }
 
-h1:after {
+h1::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 84%;      /* スマホ用 */
+    width: 84%;
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -89,7 +89,7 @@ h1:after {
     opacity: 0.9;
 }
 
-/* 画像スライダー */
+/* スライダー（PC 基本） */
 .slider {
     position: relative;
     width: 100%;
@@ -105,10 +105,9 @@ h1:after {
     cursor: pointer;
     object-fit: contain;
     transition: opacity 0.3s ease;
-    margin: 0 auto;
 }
 
-/* 矢印 */
+/* 矢印（PC 基本） */
 .arrow {
     position: absolute;
     top: 50%;
@@ -124,20 +123,15 @@ h1:after {
     justify-content: center;
     align-items: center;
     z-index: 3;
-    transition: color 0.45s ease, transform 0.45s ease;
+    transition: color 0.45s ease;
 }
 
-.arrow.left {
-    left: 8px;
-}
-
-.arrow.right {
-    right: 8px;
-}
+.arrow.left { left: 8px; }
+.arrow.right { right: 8px; }
 
 .arrow:hover {
     color: #FFE6F5;
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.01);
 }
 
 /* アイコン列 */
@@ -151,18 +145,17 @@ h1:after {
     padding-bottom: 22px;
 }
 
-/* アイコン切り替え */
+/* アイコン切替 */
 .icon-switch {
     position: relative;
     width: 42px;
     height: 42px;
     display: inline-block;
     transition: transform 0.45s ease;
-    transform-origin: top center;
 }
 
 .icon-switch:hover {
-    transform: scale(1.1);
+    transform: scale(1.01);
 }
 
 .icon-switch img {
@@ -176,18 +169,17 @@ h1:after {
 
 .icon-normal { opacity: 1; }
 .icon-hover { opacity: 0; }
-
 .icon-switch:hover .icon-normal { opacity: 0; }
 .icon-switch:hover .icon-hover { opacity: 1; }
 
-/* 下のライン（スマホ用） */
+/* SNS 下ライン */
 .icons::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 84%;  
+    width: 84%;
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -199,7 +191,7 @@ h1:after {
     border-radius: 3px;
 }
 
-/* Thanks テキスト */
+/* Thanks */
 .thanks-message {
     margin-bottom: 40px;
     font-size: 16px;
@@ -216,7 +208,7 @@ footer {
     font-family: sans-serif;
 }
 
-/* モーダル画像拡大 */
+/* モーダル */
 .modal {
     display: none;
     position: fixed;
@@ -231,48 +223,80 @@ footer {
     max-width: 90%;
     max-height: 90%;
     border-radius: 0px;
-    transition: opacity 0.3s ease;
 }
 
-.fade { opacity: 0; }
-.show { opacity: 1; }
-
-/* スマホ（幅480以下） */
+/* ================================
+  スマホ（480px 以下）
+================================ */
 @media (max-width: 480px) {
 
-    .subtitle { margin-bottom: 4px; }
-
-    .icons {
-        margin-top: 6px;
-        margin-bottom: 10px;
+    body {
+        padding: 40px 10px;
     }
 
-    .icons::after {
-        width: 84%; 
+    .container {
+        max-width: 92%;
     }
 
     .slider {
-        margin: 0 !important;
-        padding: 0 60px;
+        padding: 0 30px;   /* ← スマホの理想余白 */
+        margin-bottom: 4px;
     }
 
-    .arrow.left { left: 0; }
-    .arrow.right { right: 0; }
-
     .slider img {
-        height: 220px;
+        height: 225px;
+        object-fit: contain;
+    }
+
+    .arrow.left { left: -12px; }
+    .arrow.right { right: -12px; }
+
+    .icons {
+        margin-top: 10px;
+        margin-bottom: 14px;
     }
 }
 
-/* PC：上下ラインを完全に揃える（最適値：280px） */
+/* ================================
+  PC（600px〜）：ライン幅調整
+================================ */
 @media (min-width: 600px) {
 
-    h1::after,
+    h1::after {
+        width: 280px;
+    }
+
     .icons::after {
-        width: 280px;   /* ← 上下が100%一致します */
+        width: 280px;
     }
 
     .slider {
         padding-top: 16px !important;
     }
+}
+
+/* ================================
+  PC（481px〜）：矢印＋余白を安定
+================================ */
+@media (min-width: 481px) {
+
+    .arrow.left { left: 8px; }
+    .arrow.right { right: 8px; }
+
+    .slider {
+        padding: 0 70px;   /* ← PC の正しい広さに戻す */
+    }
+}
+
+/* ================================
+  スライダーのフェード復活（修正版）
+================================ */
+.fade {
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+}
+
+.show {
+    opacity: 1;
+    transition: opacity 0.35s ease-in-out;
 }
