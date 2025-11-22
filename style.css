@@ -65,7 +65,7 @@ h1:after {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 50%;
+    width: 84%; 
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -177,7 +177,7 @@ h1:after {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 50%;
+    width: 84%;   /* ← こちらも統一 */
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -221,16 +221,8 @@ footer {
     transition: opacity 0.3s ease;
 }
 
-.fade {
-    opacity: 0;
-}
-.show {
-    opacity: 1;
-}
-
-@media (max-width: 820px) {
-    h1:after { width: 65%; }
-}
+.fade { opacity: 0; }
+.show { opacity: 1; }
 
 @media (max-width: 480px) {
 
@@ -252,14 +244,18 @@ footer {
     .slider img {
         height: 220px;
     }
-
-    .icons::after {
-        width: 65%;
-    }
 }
 
 @media (min-width: 600px) {
     .slider {
         padding-top: 16px !important;
+    }
+}
+
+
+@media (min-width: 600px) {
+    h1:after,
+    .icons::after {
+        width: 46%;
     }
 }
