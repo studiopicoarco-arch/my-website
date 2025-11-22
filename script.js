@@ -17,7 +17,9 @@ const images = [
 
 let index = 0;
 
-const imgElement = document.getElementById("slider-img");
+const imgFront = document.getElementById("slider-img");      // 上の画像（フェードする）
+const imgBack = document.getElementById("slider-img-back");  // 下の画像（次の画像を先に表示）
+
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
@@ -30,37 +32,29 @@ const preloadImages = () => {
 };
 preloadImages();
 
-// フェード初期設定
-imgElement.classList.add("fade");
-
-window.addEventListener("load", () => {
-    imgElement.classList.add("show");
-});
-
-const FADE_TIME = 300;
-
-// スライド表示
+// スライド表示（ちらつき防止版）
 function showImage() {
-    // 一度フェードアウト
-    imgElement.classList.remove("show");
+    // 下に次の画像をセット
+    imgBack.src = images[index];
 
-    // フェードアウトが終わったら差し替える
-    const onFadeOutEnd = () => {
-        imgElement.removeEventListener("transitionend", onFadeOutEnd);
+    // 上をフェードアウト
+    imgFront.style.opacity = 0;
 
-        // 画像を切り替え
-        imgElement.src = images[index];
+    // フェード完了後に上の画像を差し替える
+    imgFront.addEventListener("transitionend", function handler() {
+        imgFront.removeEventListener("transitionend", handler);
 
-        // モーダルを開いている場合も同期
+        // 上の画像を差し替え
+        imgFront.src = images[index];
+
+        // モーダル表示中も同期
         if (modal.style.display === "flex") {
             modalImg.src = images[index];
         }
 
-        // 切り替えたあとフェードイン
-        imgElement.classList.add("show");
-    };
-
-    imgElement.addEventListener("transitionend", onFadeOutEnd);
+        // 再び表示
+        imgFront.style.opacity = 1;
+    });
 }
 
 function nextImage() {
@@ -78,17 +72,16 @@ function openModal() {
     modal.style.display = "flex";
     modalImg.src = images[index];
 
-    modalImg.classList.remove("show");
+    modalImg.style.opacity = 0;
     setTimeout(() => {
-        modalImg.classList.add("show");
+        modalImg.style.opacity = 1;
     }, 10);
 }
 
 // モーダル閉じる
 function closeModal() {
-    modalImg.classList.remove("show");
-
+    modalImg.style.opacity = 0;
     setTimeout(() => {
         modal.style.display = "none";
-    }, FADE_TIME);
+    }, 300);
 }
