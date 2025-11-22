@@ -10,6 +10,7 @@ body {
     text-align: center;
 }
 
+/* タイトルリンク */
 .title-link {
     text-decoration: none;
     color: inherit;
@@ -22,6 +23,7 @@ body {
     transform: scale(1.01);
 }
 
+/* 背景パターン */
 .bg_pattern {
     position: fixed;
     top: 0;
@@ -41,6 +43,7 @@ body {
     background-position: 0 0, 20px 20px;
 }
 
+/* 白いカード */
 .container {
     background: #ffffff;
     width: 100%;
@@ -51,9 +54,10 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
 }
 
+/* タイトル */
 h1 {
     position: relative;
-    margin: 0 0 10px;
+    margin: 0 0 16px;
     padding: 10px 0;
     color: #939DEA;
     font-size: 48px;
@@ -65,7 +69,7 @@ h1:after {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 82%; 
+    width: 84%;      /* スマホ用 */
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -77,19 +81,21 @@ h1:after {
     border-radius: 3px;
 }
 
+/* サブタイトル */
 .subtitle {
-    margin: 2px 0 20px;
+    margin: 2px 0 18px;
     font-size: 16px;
     color: #b7bdf5;
     opacity: 0.9;
 }
 
+/* 画像スライダー */
 .slider {
     position: relative;
     width: 100%;
     max-width: 620px;
     margin: 0 auto;
-    padding: 0 16px;px;
+    padding: 0 70px;
 }
 
 .slider img {
@@ -102,6 +108,7 @@ h1:after {
     margin: 0 auto;
 }
 
+/* 矢印 */
 .arrow {
     position: absolute;
     top: 50%;
@@ -133,8 +140,9 @@ h1:after {
     transform: translateY(-50%) scale(1.1);
 }
 
+/* アイコン列 */
 .icons {
-    margin: 24px auto 14px;
+    margin: 24px auto 16px;
     display: flex;
     justify-content: center;
     gap: 36px;
@@ -143,6 +151,7 @@ h1:after {
     padding-bottom: 22px;
 }
 
+/* アイコン切り替え */
 .icon-switch {
     position: relative;
     width: 42px;
@@ -171,13 +180,14 @@ h1:after {
 .icon-switch:hover .icon-normal { opacity: 0; }
 .icon-switch:hover .icon-hover { opacity: 1; }
 
+/* 下のライン（スマホ用） */
 .icons::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 82%;   /* ← こちらも統一 */
+    width: 84%;  
     height: 12px;
     background: repeating-linear-gradient(
         -45deg,
@@ -189,6 +199,7 @@ h1:after {
     border-radius: 3px;
 }
 
+/* Thanks テキスト */
 .thanks-message {
     margin-bottom: 40px;
     font-size: 16px;
@@ -196,6 +207,7 @@ h1:after {
     opacity: 0.9;
 }
 
+/* フッター */
 footer {
     margin-top: 10px;
     padding: 20px 0;
@@ -204,6 +216,7 @@ footer {
     font-family: sans-serif;
 }
 
+/* モーダル画像拡大 */
 .modal {
     display: none;
     position: fixed;
@@ -224,6 +237,7 @@ footer {
 .fade { opacity: 0; }
 .show { opacity: 1; }
 
+/* スマホ（幅480以下） */
 @media (max-width: 480px) {
 
     .subtitle { margin-bottom: 4px; }
@@ -233,9 +247,13 @@ footer {
         margin-bottom: 10px;
     }
 
+    .icons::after {
+        width: 84%; 
+    }
+
     .slider {
         margin: 0 !important;
-        padding: 0 40px;
+        padding: 0 60px;
     }
 
     .arrow.left { left: 0; }
@@ -246,16 +264,15 @@ footer {
     }
 }
 
+/* PC：上下ラインを完全に揃える（最適値：280px） */
 @media (min-width: 600px) {
+
+    h1::after,
+    .icons::after {
+        width: 280px;   /* ← 上下が100%一致します */
+    }
+
     .slider {
         padding-top: 16px !important;
-    }
-}
-
-
-@media (min-width: 600px) {
-    h1:after,
-    .icons::after {
-        width: 46%;
     }
 }
