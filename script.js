@@ -1,4 +1,3 @@
-// 画像リスト
 const images = [
     "images/top1.gif",
     "images/top2.jpg",
@@ -22,40 +21,37 @@ const imgElement = document.getElementById("slider-img");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
-// ------------------------------
-// ■ 追加：プリロード処理
-// ------------------------------
+// 画像プリロード
 const preloadImages = () => {
-    images.forEach((src) => {
+    images.forEach(src => {
         const img = new Image();
         img.src = src;
     });
 };
-
-// ページ読み込み時に実行
 preloadImages();
 
-// 初期フェード設定
+// フェード初期設定
 imgElement.classList.add("fade");
 
-// ページ読み込み後に初回の画像を表示
 window.addEventListener("load", () => {
     imgElement.classList.add("show");
 });
 
-// スライド切り替え
+// スライド表示（チラ見え防止版）
 function showImage() {
     imgElement.classList.remove("show");
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         imgElement.src = images[index];
 
         if (modal.style.display === "flex") {
             modalImg.src = images[index];
         }
 
-        imgElement.classList.add("show");
-    }, 400);
+        setTimeout(() => {
+            imgElement.classList.add("show");
+        }, 20);
+    });
 }
 
 function nextImage() {
@@ -68,20 +64,19 @@ function prevImage() {
     showImage();
 }
 
-// モーダル開閉
+// モーダル開く
 function openModal() {
     modal.style.display = "flex";
+    modalImg.src = images[index];
 
     modalImg.classList.remove("show");
-    modalImg.classList.add("fade");
-
-    modalImg.src = images[index];
 
     setTimeout(() => {
         modalImg.classList.add("show");
     }, 10);
 }
 
+// モーダル閉じる
 function closeModal() {
     modalImg.classList.remove("show");
 
