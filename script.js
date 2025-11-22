@@ -22,6 +22,19 @@ const imgElement = document.getElementById("slider-img");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
+// ------------------------------
+// ■ 追加：プリロード処理
+// ------------------------------
+const preloadImages = () => {
+    images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+    });
+};
+
+// ページ読み込み時に実行
+preloadImages();
+
 // 初期フェード設定
 imgElement.classList.add("fade");
 
@@ -55,28 +68,23 @@ function prevImage() {
     showImage();
 }
 
-// モーダル開閉（アニメーション追加）
+// モーダル開閉
 function openModal() {
     modal.style.display = "flex";
 
-    // 初期は透明
     modalImg.classList.remove("show");
     modalImg.classList.add("fade");
 
-    // 画像セット
     modalImg.src = images[index];
 
-    // フェードイン
     setTimeout(() => {
         modalImg.classList.add("show");
     }, 10);
 }
 
 function closeModal() {
-    // フェードアウト
     modalImg.classList.remove("show");
 
-    // アニメーション終了後に非表示
     setTimeout(() => {
         modal.style.display = "none";
     }, 300);
