@@ -95,7 +95,7 @@ h1::after {
     width: 100%;
     max-width: 620px;
     margin: 0 auto;
-    padding: 0 40px; /* ← PC/スマホで統一して狭めた */
+    padding: 0 40px;
 }
 
 .slider img {
@@ -142,7 +142,7 @@ h1::after {
     gap: 36px;
     flex-wrap: wrap;
     position: relative;
-    padding-bottom: 22px;
+    padding-bottom: 26px;
 }
 
 .icon-switch {
@@ -234,15 +234,20 @@ footer {
     }
 
     .slider {
-        padding: 16px 20px 0 20px; /* ← 修正点（上に16px追加） */
+        padding: 16px 20px 0 20px;
     }
 
+    /* ← “画像サイズ一定化” を適用した部分 */
     .slider img {
-        height: 150px;
+        width: 260px;   /* 一定表示 */
+        height: 150px;  /* 一定表示 */
+        object-fit: contain;
+        margin: 0 auto;
+        display: block;
     }
 
-    .arrow.left  { left: -10px; }
-    .arrow.right { right: -10px; }
+    .arrow.left  { left: -8px; }
+    .arrow.right { right: -8px; }
 
     .icons {
         margin-top: 10px;
@@ -259,7 +264,7 @@ footer {
     .icons::after { width: 280px; }
 
     .slider {
-        padding-top: 16px; /* 余白を自然に */
+        padding-top: 16px;
         padding-left: 40px;
         padding-right: 40px;
     }
