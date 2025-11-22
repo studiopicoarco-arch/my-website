@@ -141,7 +141,7 @@ h1:after {
     gap: 36px;
     flex-wrap: wrap;
     position: relative;
-    padding-bottom: 32px;
+    padding-bottom: 22px;
 }
 
 /* アイコン hover アニメーション */
@@ -184,7 +184,7 @@ h1:after {
     opacity: 1;
 }
 
-/* SNS アイコン下ライン（タイトルと同じデザイン） */
+/* SNS アイコン下ライン */
 .icons::after {
     content: "";
     position: absolute;
@@ -260,6 +260,7 @@ footer {
 
     .icons {
         margin-top: 6px;
+        margin-bottom: 28px; /* ← Thanks との距離を短くする */
     }
 
     .slider {
