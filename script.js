@@ -7,13 +7,13 @@
 
         var link = document.createElement("link");
         link.rel = "apple-touch-icon";
-        link.href = "apple-touch-icon-white.png"; // 白背景版
+        link.href = "apple-touch-icon-white.png";
         link.sizes = "180x180";
         document.head.appendChild(link);
     }
 })();
 
-// --- 以下、元のスライダー機能 ---
+// --- スライダー画像一覧 ---
 const images = [
     "images/top1.jpg",
     "images/top2.gif",
@@ -57,15 +57,14 @@ const FADE_TIME = 300;
 
 function showImage() {
     imgElement.classList.remove("show");
+    modalImg.classList.remove("show");
 
     setTimeout(() => {
         imgElement.src = images[index];
-
-        if (modal.style.display === "flex") {
-            modalImg.src = images[index];
-        }
+        modalImg.src = images[index];
 
         imgElement.classList.add("show");
+        modalImg.classList.add("show");
     }, FADE_TIME);
 }
 
@@ -79,6 +78,7 @@ function prevImage() {
     showImage();
 }
 
+// モーダル開閉
 function openModal() {
     modal.style.display = "flex";
     modalImg.src = images[index];
@@ -96,3 +96,63 @@ function closeModal() {
         modal.style.display = "none";
     }, FADE_TIME);
 }
+
+// -------------------------------
+//  矢印ボタン（光らせるために必要）
+// -------------------------------
+const leftArrow = document.querySelector(".arrow.left");
+const rightArrow = document.querySelector(".arrow.right");
+
+function flashArrow(arrowElement) {
+    arrowElement.classList.add("active");
+    setTimeout(() => {
+        arrowElement.classList.remove("active");
+    }, 150);
+}
+
+// -------------------------------
+//  十字キー操作（通常・モーダル共に動作）
+// -------------------------------
+document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") {
+        flashArrow(rightArrow);
+        nextImage();
+    } else if (e.key === "ArrowLeft") {
+        flashArrow(leftArrow);
+        prevImage();
+    }
+});
+
+// -------------------------------
+//  スワイプ操作（通常・モーダル共に動作）
+// -------------------------------
+let startX = 0;
+let endX = 0;
+
+function handleSwipe(diff) {
+    if (Math.abs(diff) > 50) {
+        if (diff < 0) {
+            nextImage();
+        } else {
+            prevImage();
+        }
+    }
+}
+
+// 通常画像のスワイプ
+imgElement.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+imgElement.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe(endX - startX);
+});
+
+// モーダル拡大画像のスワイプ
+modalImg.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+modalImg.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe(endX - startX);
+});
