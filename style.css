@@ -152,7 +152,7 @@ h1::after {
     margin: 14px auto 16px;
     display: flex;
     justify-content: center;
-    gap: 36px;
+    gap: 18px;
     flex-wrap: wrap;
     position: relative;
     padding-bottom: 24px;
