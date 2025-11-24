@@ -15,21 +15,22 @@
 
 // --- スライダー画像一覧 ---
 const images = [
-    "images/top1.jpg",
-    "images/top2.gif",
-    "images/top3.gif",
-    "images/top4.jpg",
-    "images/top5.gif",
-    "images/top6.gif",
-    "images/top7.gif",
-    "images/top8.gif",
-    "images/top9.gif",
-    "images/top10.gif",
-    "images/top11.gif",
-    "images/top12.png",
-    "images/top13.gif",
-    "images/top14.gif",
-    "images/top15.gif",
+    "images/top1.webp",
+    "images/top2.webp",
+    "images/top3.webp",
+    "images/top4.webp",
+    "images/top5.webp",
+    "images/top6.webp",
+    "images/top7.webp",
+    "images/top8.webp",
+    "images/top9.webp",
+    "images/top10.webp",
+    "images/top11.webp",
+    "images/top12.webp",
+    "images/top13.webp",
+    "images/top14.webp",
+    "images/top15.webp",
+    "images/top16.webp",
 ];
 
 let index = 0;
