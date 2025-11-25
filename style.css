@@ -193,7 +193,6 @@ h1::after {
     border-radius: 3px;
 }
 
-/* Thanks */
 .thanks-message {
     margin-bottom: 50px;
     font-size: 16px;
@@ -208,7 +207,6 @@ footer {
     font-family: sans-serif;
 }
 
-/* モーダル */
 .modal {
     display: none;
     position: fixed;
