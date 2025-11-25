@@ -232,7 +232,7 @@ footer {
     }
 
     .slider {
-        padding: 0 40px; /* ← スマホはさらに詰める */
+        padding: 0 40px;
     }
 
     .slider img {
@@ -255,7 +255,7 @@ footer {
     .icons::after { width: 280px; }
 
     .slider {
-        padding-top: 6px; /* 余白を自然に */
+        padding-top: 6px;
         padding-left: 40px;
         padding-right: 40px;
     }
