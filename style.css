@@ -135,7 +135,7 @@ h1::after,
 .arrow:hover,
 .arrow.active {
     color: #FFE6F5;
-    transform: translateY(-50%) scale(1.01);
+    transform: translateY(-50%) scale(1.05);
 }
 
 .icons {
@@ -156,7 +156,7 @@ h1::after,
 }
 
 .icon-switch:hover {
-    transform: scale(1.01);
+    transform: scale(1.04);
 }
 
 .icon-switch img {
@@ -183,10 +183,10 @@ h1::after,
 }
 
 .steam-icon {
-    transform: scale(0.93);
+    transform: scale(0.92);
 }
 .steam-icon:hover {
-    transform: scale(0.94);
+    transform: scale(0.93);
 }
 
 .thanks-message {
