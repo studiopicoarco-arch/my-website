@@ -193,10 +193,10 @@ h1::after {
 }
 
 .steam-icon {
-    transform: scale(0.92);
+    transform: scale(0.93);
 }
 .steam-icon:hover {
-    transform: scale(0.93); 
+    transform: scale(0.94); 
 }
 
 .thanks-message {
