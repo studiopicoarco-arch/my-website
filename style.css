@@ -29,8 +29,7 @@ body {
 
 .bg_pattern {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100vw;
     height: 100vh;
     background-color: #FFE6F5;
@@ -49,10 +48,10 @@ body {
 .container {
     background: #ffffff;
     width: 100%;
-    max-width: 38.75rem; /* 620px */
+    max-width: 38.75rem;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem 1.25rem 1.25rem;
-    border-radius: 3.75rem; /* 60px */
+    padding: 2.5rem 1.25rem 1.25rem;
+    border-radius: 3.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
 }
 
@@ -61,17 +60,18 @@ h1 {
     margin: 0 0 1rem;
     padding: 0.625rem 0;
     color: #939DEA;
-    font-size: 3rem; /* 48px */
+    font-size: 3rem;
 }
 
-h1::after {
+h1::after,
+.icons::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
     width: 84%;
-    height: 0.75rem; /* 12px */
+    height: 0.75rem;
     background: repeating-linear-gradient(
         -45deg,
         #FFE6F5,
@@ -79,13 +79,13 @@ h1::after {
         #fff 2px,
         #fff 4px
     );
-    border-radius: 0.1875rem; /* 3px */
+    border-radius: 0.1875rem;
 }
 
 .subtitle {
     margin-top: 0.125rem;
     margin-bottom: 0;
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     color: #b7bdf5;
     opacity: 0.9;
 }
@@ -93,15 +93,15 @@ h1::after {
 .slider {
     position: relative;
     width: 100%;
-    max-width: 31.25rem; /* 500px */
+    max-width: 31.25rem;
     margin: 0.625rem auto 0;
     padding: 0 2.5rem;
 }
 
 .slider img {
     width: 100%;
-    height: 18.75rem; /* 300px */
-    border-radius: 1.25rem; /* 20px */
+    height: 18.75rem;
+    border-radius: 1.25rem;
     cursor: pointer;
     object-fit: cover;
     transition: opacity 0.3s ease;
@@ -115,44 +115,43 @@ h1::after {
     border: none;
     cursor: pointer;
     color: #939DEA;
-    font-size: 2.6rem; /* 36px */
-    width: 2.125rem; /* 34px */
+    font-size: 2.6rem;
+    width: 2.125rem;
     height: 2.125rem;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 3;
-    transition: color 0.45s ease;
+    transition: color 0.45s ease, transform 0.45s ease;
 }
 
-.arrow.left { left: -1.25rem; }  /* -20px */
-.arrow.right { right: -1.25rem; }
-
-.arrow:hover {
-    color: #FFE6F5;
-    transform: translateY(-50%) scale(1.01);
+.arrow.left {
+    left: -1.25rem;
+}
+.arrow.right {
+    right: -1.25rem;
 }
 
+.arrow:hover,
 .arrow.active {
-    transform: translateY(-50%) scale(1.01);
     color: #FFE6F5;
+    transform: translateY(-50%) scale(1.01);
 }
 
 .icons {
-    margin: 0.875rem auto 1rem; /* 14px 16px */
+    margin: 0.875rem auto 1rem;
     display: flex;
     justify-content: center;
-    gap: 1.125rem; /* 18px */
+    gap: 1.125rem;
     flex-wrap: wrap;
     position: relative;
-    padding-bottom: 1.5rem; /* 24px */
+    padding-bottom: 1.5rem;
 }
 
 .icon-switch {
     position: relative;
-    width: 2.625rem; /* 42px */
+    width: 2.625rem;
     height: 2.625rem;
-    display: inline-block;
     transition: transform 0.45s ease;
 }
 
@@ -163,44 +162,35 @@ h1::after {
 .icon-switch img {
     position: absolute;
     inset: 0;
-    width: 2.625rem; /* 42px */
+    width: 2.625rem;
     height: 2.625rem;
     object-fit: contain;
     transition: opacity 0.45s ease;
 }
 
-.icon-normal { opacity: 1; }
-.icon-hover { opacity: 0; }
-.icon-switch:hover .icon-normal { opacity: 0; }
-.icon-switch:hover .icon-hover { opacity: 1; }
+.icon-normal {
+    opacity: 1;
+}
+.icon-hover {
+    opacity: 0;
+}
 
-.icons::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: 84%;
-    height: 0.75rem; 
-    background: repeating-linear-gradient(
-        -45deg,
-        #FFE6F5,
-        #FFE6F5 2px,
-        #fff 2px,
-        #fff 4px
-    );
-    border-radius: 0.1875rem;
+.icon-switch:hover .icon-normal {
+    opacity: 0;
+}
+.icon-switch:hover .icon-hover {
+    opacity: 1;
 }
 
 .steam-icon {
     transform: scale(0.93);
 }
 .steam-icon:hover {
-    transform: scale(0.94); 
+    transform: scale(0.94);
 }
 
 .thanks-message {
-    margin-bottom: 3.125rem; /* 50px */
+    margin-bottom: 3.125rem;
     font-size: 1rem;
     color: #b7bdf5;
     opacity: 0.9;
@@ -209,7 +199,7 @@ h1::after {
 footer {
     margin-top: 0.625rem;
     color: #939DEA;
-    font-size: 0.875rem; /*14px*/
+    font-size: 0.875rem;
     font-family: sans-serif;
 }
 
@@ -226,47 +216,7 @@ footer {
 .modal img {
     max-width: 90%;
     max-height: 90%;
-    border-radius: 1.25rem; /*20px*/
-}
-
-@media (max-width: 480px) {
-
-    body {
-        padding: 2.5rem 0.625rem; /*40px 10px*/
-    }
-
-    .slider {
-        padding: 0 2.5rem;
-    }
-
-    .slider img {
-        height: 12.5rem; /*200px*/
-    }
-
-    .arrow.left { left: -0.25rem; }
-    .arrow.right { right: -0.25rem; }
-
-    .icons {
-        margin-top: 0.625rem;
-        margin-bottom: 0.875rem;
-    }
-}
-
-@media (min-width: 600px) {
-
-    h1::after { width: 17.5rem; } /*280px*/
-    .icons::after { width: 17.5rem; }
-
-    .slider {
-        padding-top: 0.375rem;
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .arrow.left { left: -0.5rem; }
-    .arrow.right { right: -0.5rem; }
+    border-radius: 1.25rem;
 }
 
 .fade {
@@ -277,4 +227,37 @@ footer {
 .show {
     opacity: 1;
     transition: opacity 0.35s ease-in-out;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 2.5rem 0.625rem;
+    }
+
+    .slider {
+        padding: 0 2.5rem;
+    }
+
+    .slider img {
+        height: 12.5rem;
+    }
+
+    .arrow.left {
+        left: -0.25rem;
+    }
+    .arrow.right {
+        right: -0.25rem;
+    }
+
+    .icons {
+        margin-top: 0.625rem;
+        margin-bottom: 0.875rem;
+    }
+}
+
+@media (min-width: 600px) {
+    h1::after,
+    .icons::after {
+        width: 17.5rem;
+    }
 }
