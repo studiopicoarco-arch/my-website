@@ -254,11 +254,11 @@ footer {
     .icons {
         margin-top: 0.625rem;
         margin-bottom: 0.875rem;
-        transform: translateX(-5px);
+        transform: translateX(-4px);
     }
 
     .icons::after {
-        transform: translateX(calc(-50% + 5px));
+        transform: translateX(calc(-50% + 4px));
     }
 }
 
