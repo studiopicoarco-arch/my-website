@@ -142,7 +142,7 @@ h1::after,
     margin: 0.875rem auto 1rem;
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
     flex-wrap: wrap;
     position: relative;
     padding-bottom: 1.5rem;
@@ -271,11 +271,11 @@ footer {
     .icons {
         margin-top: 0.625rem;
         margin-bottom: 0.875rem;
-        transform: translateX(-4px);
+        transform: translateX(-2px);
     }
 
     .icons::after {
-        transform: translateX(calc(-50% + 4px));
+        transform: translateX(calc(-50% + 2px));
     }
 }
 
